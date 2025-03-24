@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Countries</title>
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #fa7c89, #f0c1c1, #ff8c97);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        /* Country List Styles */
+        .country-list {
+            margin: 20px;
+            padding: 20px;
+            background: rgb(255, 98, 125);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .country-list a {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .country-list a:hover {
+            background: #f0c1c1;
+            transform: scale(1.1);
+        }
+
+        /* Country Information Section */
+        #country-info {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            width: 60%;
+            background: white;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        #country-info img {
+            width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+        }
+
+        #country-name {
+            font-size: 2em;
+            color: #f93375;
+        }
+
+        #country-description {
+            font-size: 1.2em;
+        }
+
+        .close-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #ff4b5c;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #ff1e3c;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 530px) {
+            #country-info {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌍 World Countries 🌍</h1>
+    <p>Click on a country to learn more.</p>
+
+    <!-- Country List -->
+    <div class="country-list">
+        <a onclick="showCountry('india')">India</a> 
+        <a onclick="showCountry('usa')">United States</a>
+        <a onclick="showCountry('australia')">Australia</a> 
+        <a onclick="showCountry('france')">France</a> 
+        <a onclick="showCountry('japan')">Japan</a> 
+        <a onclick="showCountry('brazil')">Brazil</a>
+    </div>
+
+    <!-- Country Info Section -->
+    <div id="country-info">
+        <h2 id="country-name"></h2>
+        <img id="country-image" src="" alt="Country Image">
+        <p id="country-description"></p>
+        <button class="close-btn" onclick="hideInfo()">Close</button>
+    </div>
+
+    <script>
+        // Country details stored in JavaScript object
+        const countries = {
+            india: {
+                name: "India",
+                description: "India is the seventh-largest country by land area and the second-most populous country in the world. It is known for its diverse culture, rich history, and technological advancements.",
+                image: "1.png"
+            },
+            usa: {
+                name: "United States",
+                description: "The United States is a country in North America known for its diverse geography, strong economy, and cultural influence worldwide.",
+                image: "2.jpg"
+            },
+            australia: {
+                name: "Australia",
+                description: "The United States is a country in North America known for its diverse geography, strong economy, and cultural influence worldwide.",
+                image: "aus.webp"
+            },
+            france: {
+                name: "France",
+                description: "France is a European country famous for its art, cuisine, and landmarks like the Eiffel Tower.",
+                image: "paris.jpg"
+            },
+            japan: {
+                name: "Japan",
+                description: "Japan is an island nation in East Asia known for its technology, culture, and beautiful landscapes.",
+                image: "japanwebp.webp"
+            },
+            brazil: {
+                name: "Brazil",
+                description: "Brazil is the largest country in South America, known for its Amazon rainforest and Carnival festival.",
+                image: "brazil.png"
+            }
+        };
+
+        // Function to display country details
+        function showCountry(countryKey) {
+            const country = countries[countryKey];
+            if (country) {
+                document.getElementById("country-name").innerText = country.name;
+                document.getElementById("country-description").innerText = country.description;
+                document.getElementById("country-image").src = country.image;
+                document.getElementById("country-info").style.display = "block";
+            }
+        }
+
+        // Function to hide country details
+        function hideInfo() {
+            document.getElementById("country-info").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
